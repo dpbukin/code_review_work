@@ -22,14 +22,20 @@ permissions:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+#Добавление блока matrix для указания различных комбинаций версий ОС и версий Java
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        java: [11, 13, 17]
 
     steps:
     - uses: actions/checkout@v3
-    - name: Set up JDK 11
+    - name: Set up JDK
       uses: actions/setup-java@v3
       with:
-        java-version: '11'
+        java-version: ${{ matrix.java }}
         distribution: 'temurin'
         
     - name: Grant execute permissions to gradlew
