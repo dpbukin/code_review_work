@@ -27,8 +27,8 @@ jobs:
 
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest]
-        java: [11, 17]
+        os: [ubuntu-latest or ubuntu-22.04, ubuntu-20.04, windows-latest or windows-2022, windows-2019, macos-latest or macos-12, macos-11]
+        java: [11, 13, 17]
 
     steps:
     - uses: actions/checkout@v3
